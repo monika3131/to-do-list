@@ -1,50 +1,40 @@
-var listOfActivities = [];
+var activitiesList = [];
 
+var inputElement = document.getElementById("input");
 
-var input = document.getElementById("input");
-
-
-var todolist = document.getElementById("todolist");
-
+var todoListElement = document.getElementById("todolist");
 
 document.getElementById("button").onclick = click;
 
-
 function click() {
-  
-  listOfActivities.push(input.value);
-  console.log(listOfActivities);
-  input.value = "";
-  showList();
+    activitiesList.push(inputElement.value);
+    console.log(activitiesList);
+    inputElement.value = "";
+    showList();
 }
-
 
 function showList() {
-
-  todolist.innerHTML = " ";
-
-
-  listOfActivities.forEach(function (n, i) {
-    todolist.innerHTML +=
-      "<li>" +
-      n +
-      "<a onclick='editItem(" +
-      i +
-      ")'>Edit</a>" +
-      "<a onclick='deleteItem(" +
-      i +
-      ")'>&times | </a></li>";
-  });
+    todoListElement.innerHTML = " ";
+    activitiesList.forEach(function (activity, index) {
+        todoListElement.innerHTML +=
+            "<li>" +
+            activity +
+            "<a onclick='editItem(" +
+            index +
+            ")'>Edit</a>" +
+            "<a onclick='deleteItem(" +
+            index +
+            ")'>&times; | </a></li>";
+    });
 }
 
-function deleteItem(i) {
-  listOfActivities.splice(i, 1);
-  showList();
+function deleteItem(index) {
+    activitiesList.splice(index, 1);
+    showList();
 }
 
-
-function editItem(i) {
-  var newValue = prompt("Please insert your new value");
-  listOfActivities.splice(i, 1, newValue);
-  showList();
+function editItem(index) {
+    var newValue = prompt("Please insert your new value");
+    activitiesList.splice(index, 1, newValue);
+    showList();
 }
