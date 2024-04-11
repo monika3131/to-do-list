@@ -27,14 +27,14 @@ function showList() {
             ")'>&times; | </a></li>";
     });
 }
-
+function editItem(index) {
+    var newValue = prompt("Insert your new value");
+    activitiesList.splice(index, 1, newValue);
+    showList();
+}
 function deleteItem(index) {
     activitiesList.splice(index, 1);
     showList();
 }
 
-function editItem(index) {
-    var newValue = prompt("Please insert your new value");
-    activitiesList.splice(index, 1, newValue);
-    showList();
-}
+
